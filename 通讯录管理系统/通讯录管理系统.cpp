@@ -119,9 +119,18 @@ int main()
 
 	while (true)
 	{
-		int select = 0;//初始选择变量
+		int select = -1;//初始选择变量
 		showMenu();//菜单调用
 		cin >> select;
+		if (!cin.good())
+		{
+			cout << "未选择功能!" << endl;
+			cin.clear();
+			cin.ignore(10000, '\n');
+			system("pause");
+			system("cls");
+			continue;
+		}
 		switch (select)
 		{
 		case 1://添加联系人
@@ -144,7 +153,8 @@ int main()
 			return 0;
 			break;
 		default:
-			//cin.ignore(numeric_limits<std::streamsize>::max());//清除缓冲区当前行
+			cout << "未选择功能!" << endl;
+			system("pause");
 			system("cls");
 			break;
 		}
